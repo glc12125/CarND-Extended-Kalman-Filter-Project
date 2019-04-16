@@ -132,3 +132,84 @@ still be compilable with cmake and make.
 ## How to write a README
 A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
 
+## Running the Kalman Filter
+
+First start the simulator and choose "Project 1/2: EKF and UKF". Then from the project root directory, execute `./build/ExtendedKF`. The output should be:
+
+```
+Listening to port 4567
+Connected!!!
+```
+
+The command line output "Connected!!!" shows that the EKF program connects to the simulator once the simulator is in the simulation mode.
+
+The following is an image of the simulator:
+
+![Simulator without data](images/simulator.png)
+
+The simulator provides two datasets. The difference between them are:
+
+- The direction the car (the object) is moving.
+- The order the first measurement is sent to the EKF. On dataset 1, the LIDAR measurement is sent first. On the dataset 2, the RADAR measurement is sent first.
+
+Here is the simulator final state after running the EKF with dataset 1:
+
+![dataset 1](images/dataset1.png)
+
+Here is the simulator final state after running the EKF with dataset 2:
+
+![dataset 2](images/dataset2.png)
+
+# [Rubric](https://review.udacity.com/#!/rubrics/748/view) points
+
+## Compiling
+
+### Your code should compile
+
+The code compiles without errors.
+
+## Accuracy
+
+### px, py, vx, vy output coordinates must have an RMSE <= [.11, .11, 0.52, 0.52] when using the file: "obj_pose-laser-radar-synthetic-input.txt" which is the same data file the simulator uses for Dataset 1.
+
+The EKF accuracy was:
+
+- Dataset 1 : RMSE <= [0.0974, 0.0855, 0.4517, 0.4404]
+- Dataset 2 : RMSE <= [0.0726, 0.0965, 0.4216, 0.4932]
+
+## Following the Correct Algorithm
+
+### Your Sensor Fusion algorithm follows the general processing flow as taught in the preceding lessons.
+
+The Kalman filter implementation can be found [src/kalman_filter.cpp](./src/kalman_filter.cpp) and it is used to predict at [src/FusionEKF.cpp](./src/FusionEKF.cpp#L112) line 112 and to update line 146 to 157.
+
+### Your Kalman Filter algorithm handles the first measurements appropriately.
+
+The first measurement is handled at [src/FusionEKF.cpp](./src/FusionEKF.cpp#L53) from line 53 to line 99.
+
+### Your Kalman Filter algorithm first predicts then updates.
+
+The predict operation could be found at [src/FusionEKF.cpp](./src/FusionEKF.cpp#L112) line 112 and the update operation from line46 to 157 of the same file.
+
+### Your Kalman Filter can handle radar and lidar measurements.
+
+Different type of measurements are handled in two places in [src/FusionEKF.cpp](./src/FusionEKF.cpp#79):
+
+- For the first measurement from line 79 to line 93.
+- For the update from line 146 to 157.
+
+, both of which handles different types of sensors.
+
+## Code Efficiency
+
+### Your algorithm should avoid unnecessary calculations.
+
+The following conventions are followed:
+
+- Member variables are all named with an extra underscore (_) to differentiate from other variables
+- No big data structures were copied unecessarily large number of times
+
+## Additionaly code readability
+
+- Necessary amount of comments were added but not many
+- The ProcessMeasurement function of FusionEKF class has been refactored into three separate private functions so that all member functions of FusionEKF follow the paradigm "Single Responsibility"

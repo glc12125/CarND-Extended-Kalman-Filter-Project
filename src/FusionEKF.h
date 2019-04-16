@@ -32,6 +32,12 @@ class FusionEKF {
   KalmanFilter ekf_;
 
  private:
+
+  void firstMeasurement(const MeasurementPackage &measurement_pack);
+
+  void predict(const MeasurementPackage &measurement_pack);
+
+  void update(const MeasurementPackage &measurement_pack);
   // check whether the tracking toolbox was initialized or not (first measurement)
   bool is_initialized_;
 
