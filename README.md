@@ -160,7 +160,7 @@ Here is the simulator final state after running the EKF with dataset 2:
 
 ![dataset 2](images/dataset2.png)
 
-# [Rubric](https://review.udacity.com/#!/rubrics/748/view) points
+# [Rubric points](https://review.udacity.com/#!/rubrics/748/view)
 
 ## Compiling
 
@@ -174,8 +174,23 @@ The code compiles without errors.
 
 The EKF accuracy was:
 
-- Dataset 1 : RMSE <= [0.0974, 0.0855, 0.4517, 0.4404]
-- Dataset 2 : RMSE <= [0.0726, 0.0965, 0.4216, 0.4932]
+- Dataset 1:
+
+| Output |   RMSE  |
+|:-----:|:-------:|
+|  px   | 0.0974  |
+|  py   | 0.0855  |
+|  vx   | 0.4517  |
+|  vy   | 0.4404  |
+
+- Dataset 2:
+
+| Output |   RMSE  |
+|:-----:|:-------:|
+|  px   | 0.0726  |
+|  py   | 0.0965  |
+|  vx   | 0.4216  |
+|  vy   | 0.4932  |
 
 ## Following the Correct Algorithm
 
