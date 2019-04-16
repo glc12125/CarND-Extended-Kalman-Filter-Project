@@ -196,22 +196,22 @@ The EKF accuracy was:
 
 ### Your Sensor Fusion algorithm follows the general processing flow as taught in the preceding lessons.
 
-The Kalman filter implementation can be found [src/kalman_filter.cpp](./src/kalman_filter.cpp) and it is used to predict at [src/FusionEKF.cpp](./src/FusionEKF.cpp#L112) line 112 and to update line 146 to 157.
+The Kalman filter implementation can be found [src/kalman_filter.cpp](./src/kalman_filter.cpp) and it is used to predict at [src/FusionEKF.cpp](./src/FusionEKF.cpp#L90) line 90 and to update line 117 to 130.
 
 ### Your Kalman Filter algorithm handles the first measurements appropriately.
 
-The first measurement is handled at [src/FusionEKF.cpp](./src/FusionEKF.cpp#L53) from line 53 to line 99.
+The first measurement is handled at [src/FusionEKF.cpp](./src/FusionEKF.cpp#L49) from line 49 to line 88.
 
 ### Your Kalman Filter algorithm first predicts then updates.
 
-The predict operation could be found at [src/FusionEKF.cpp](./src/FusionEKF.cpp#L112) line 112 and the update operation from line46 to 157 of the same file.
+The predict operation could be found at [src/FusionEKF.cpp](./src/FusionEKF.cpp#L90) line 90 and the update operation from line 117 to 130 of the same file.
 
 ### Your Kalman Filter can handle radar and lidar measurements.
 
 Different type of measurements are handled in two places in [src/FusionEKF.cpp](./src/FusionEKF.cpp#79):
 
-- For the first measurement from line 79 to line 93.
-- For the update from line 146 to 157.
+- For the first measurement from line 69 to line 83.
+- For the update from line 118 to 129.
 
 , both of which handles different types of sensors.
 
